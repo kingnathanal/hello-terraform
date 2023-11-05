@@ -17,7 +17,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   default_node_pool {
     name           = "kubepool"
     node_count     = 1
-    vm_size        = "Standard_B2s"
+    vm_size        = "Standard_B2als_v2" // Standard_B2s - use when no quota
     vnet_subnet_id = var.vnet_subnet_id
     os_sku         = "Ubuntu"
   }
