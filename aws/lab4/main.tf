@@ -126,6 +126,6 @@ resource "aws_instance" "web_server" {
 }
 
 resource "aws_instance" "linux_server" {
-  ami = "ami-06b09bfacae1453cb"
+  ami           = "ami-06b09bfacae1453cb"
   instance_type = "t2.micro"
 }

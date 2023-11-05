@@ -1,3 +1,3 @@
 resource "random_string" "random" {
-  length  = 10
+  length = 10
 }

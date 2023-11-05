@@ -10,7 +10,7 @@ resource "azurerm_kubernetes_cluster" "this" {
 
 
   network_profile {
-    network_plugin = "kubenet"
+    network_plugin    = "kubenet"
     load_balancer_sku = "basic"
   }
 

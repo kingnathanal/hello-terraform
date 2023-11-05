@@ -156,5 +156,5 @@ resource "aws_security_group" "my-new-security-group" {
 }
 
 resource "random_id" "randomness" {
-byte_length = 8
+  byte_length = 8
 }
