@@ -1,19 +1,3 @@
-variable "resource_group_name" {
-  description = "The name of the resource group in which to create the AKS cluster."
-  type        = string
-}
-
-variable "location" {
-  description = "The Azure Region in which to create the AKS cluster."
-  type        = string
-}
-
-variable "vnet_subnet_id" {
-  description = "The ID of the subnet in which to deploy the AKS cluster."
-  type        = string
-  default     = null
-}
-
 resource "azurerm_kubernetes_cluster" "this" {
   name                      = "cheap-aks"
   location                  = var.location
@@ -26,11 +10,8 @@ resource "azurerm_kubernetes_cluster" "this" {
 
 
   network_profile {
-    network_plugin    = "azure"
-    network_policy    = "azure"
+    network_plugin = "kubenet"
     load_balancer_sku = "basic"
-    service_cidr      = "172.25.0.0/16"
-    dns_service_ip    = "172.25.0.10"
   }
 
   default_node_pool {

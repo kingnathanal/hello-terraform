@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "this" {
 
 resource "azurerm_virtual_network" "this" {
   name                = "hyyercode-vnet"
-  address_space       = ["10.0.0.0/16"]
+  address_space       = ["10.1.0.0/16"]
   location            = local.location
   resource_group_name = azurerm_resource_group.this.name
 }
@@ -24,18 +24,14 @@ resource "azurerm_subnet" "aks_subnet" {
   name                 = "aks-subnet"
   resource_group_name  = azurerm_resource_group.this.name
   virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = ["10.0.0.0/24"]
-
-  depends_on = [azurerm_virtual_network.this]
+  address_prefixes     = ["10.1.0.0/24"]
 }
 
 resource "azurerm_subnet" "app_subnet" {
   name                 = "app-subnet"
   resource_group_name  = azurerm_resource_group.this.name
   virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = ["10.0.1.0/24"]
-
-  depends_on = [azurerm_virtual_network.this]
+  address_prefixes     = ["10.1.1.0/24"]
 }
 
 module "cheap_azure_kubernetes" {
