@@ -20,7 +20,6 @@ resource "azurerm_kubernetes_cluster" "this" {
     vm_size                     = "Standard_B2als_v2" // Standard_B2s - use when no quota
     vnet_subnet_id              = var.vnet_subnet_id
     os_sku                      = "Ubuntu"
-    temporary_name_for_rotation = "temp_kubepool"
   }
 
   identity {
