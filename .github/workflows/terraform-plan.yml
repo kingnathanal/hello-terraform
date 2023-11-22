@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Terraform Azure Plan'
 
 on:
   pull_request:

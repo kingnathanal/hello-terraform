@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Terraform Azure Apply'
 
 on:
   workflow_dispatch:

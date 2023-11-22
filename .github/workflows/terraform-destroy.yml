@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Terraform Azure Destroy'
 
 on:
   workflow_dispatch:
