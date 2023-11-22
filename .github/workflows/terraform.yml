@@ -48,6 +48,8 @@ on:
   pull_request:
     branches:
     - main
+    paths:
+    - azure/**
 
 permissions:
   contents: read
