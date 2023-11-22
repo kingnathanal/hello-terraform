@@ -1,6 +1,11 @@
 name: 'Terraform Azure Plan'
 
 on:
+  push:
+    branches:
+    - master
+    paths:
+    - azure/**
   pull_request:
     branches:
     - master
