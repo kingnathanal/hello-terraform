@@ -47,7 +47,7 @@ name: 'Terraform'
 on:
   pull_request:
     branches:
-    - main
+    - master
     paths:
     - azure/**
 
