@@ -8,7 +8,7 @@ permissions:
   
 env:
  # verbosity setting for Terraform logs
- TF_LOG: INFO
+ # TF_LOG: INFO
  # Credentials for deployment to AZURE
  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
