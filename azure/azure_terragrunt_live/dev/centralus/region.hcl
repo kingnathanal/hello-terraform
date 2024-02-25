@@ -1,3 +1,3 @@
 locals {
-    azure_region = "centralus"
+  azure_region = "centralus"
 }

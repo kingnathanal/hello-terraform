@@ -1,3 +1,3 @@
 locals {
-    azure_region = "eastus"
+  azure_region = "eastus"
 }

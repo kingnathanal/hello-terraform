@@ -15,10 +15,10 @@ locals {
 }
 
 generate "tfvars" {
-  path      = "terragrunt.auto.tfvars"
-  if_exists = "overwrite"
+  path              = "terragrunt.auto.tfvars"
+  if_exists         = "overwrite"
   disable_signature = true
-  contents = <<-EOF
+  contents          = <<-EOF
     azure_region = "${local.region_vars.locals.azure_region}"
   EOF
 }
