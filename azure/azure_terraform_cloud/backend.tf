@@ -3,7 +3,7 @@ terraform {
     organization = "hyyercode"
 
     workspaces {
-      name = "hello-terraform-ws"
+      name = "hello-terraform-api"
     }
   }
 }
