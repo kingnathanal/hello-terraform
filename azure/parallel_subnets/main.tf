@@ -20,7 +20,7 @@
 resource "azurerm_resource_group" "this" {
   name     = "parallel_subnet"
   location = "eastus2"
-  tags     = {
+  tags = {
     environment = "dev"
   }
 }
@@ -33,40 +33,40 @@ resource "azurerm_virtual_network" "this" {
 }
 
 resource "azurerm_route_table" "this" {
-  name = "subnet-rt"
-  location = azurerm_resource_group.this.location
+  name                = "subnet-rt"
+  location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 }
 
 resource "azapi_resource" "subnet1" {
-  type = "Microsoft.Network/virtualNetworks/subnets@2023-05-01"
-  name = "subnet1"
+  type      = "Microsoft.Network/virtualNetworks/subnets@2023-05-01"
+  name      = "subnet1"
   parent_id = azurerm_virtual_network.this.id
   body = jsonencode({
-      properties = {
-        addressPrefix = "10.1.0.0/24"
-        routeTable = {
-          id = azurerm_route_table.this.id
-        }
-        privateEndpointNetworkPolicies = "Enabled"
-        privateLinkServiceNetworkPolicies = "Enabled"
+    properties = {
+      addressPrefix = "10.1.0.0/24"
+      routeTable = {
+        id = azurerm_route_table.this.id
       }
+      privateEndpointNetworkPolicies    = "Enabled"
+      privateLinkServiceNetworkPolicies = "Enabled"
+    }
   })
 }
 
 resource "azapi_resource" "subnet2" {
-  type = "Microsoft.Network/virtualNetworks/subnets@2023-05-01"
-  name = "subnet2"
+  type      = "Microsoft.Network/virtualNetworks/subnets@2023-05-01"
+  name      = "subnet2"
   parent_id = azurerm_virtual_network.this.id
   body = jsonencode({
-      properties = {
-        addressPrefix = "10.1.1.0/24"
-        routeTable = {
-          id = azurerm_route_table.this.id
-        }
-        privateEndpointNetworkPolicies = "Enabled"
-        privateLinkServiceNetworkPolicies = "Enabled"
+    properties = {
+      addressPrefix = "10.1.1.0/24"
+      routeTable = {
+        id = azurerm_route_table.this.id
       }
+      privateEndpointNetworkPolicies    = "Enabled"
+      privateLinkServiceNetworkPolicies = "Enabled"
+    }
   })
 }
 
