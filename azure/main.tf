@@ -1,9 +1,14 @@
 locals {
-  location = "eastus2"
+  location = var.region
   tags = {
     owner      = "Will Britton"
     managed_by = "Terraform"
   }
+}
+
+variable "region" {
+  description = "The region in which all resources will be created"
+  type = string
 }
 
 // create a resource group
@@ -35,7 +40,8 @@ resource "azurerm_subnet" "app_subnet" {
 }
 
 module "cheap_azure_kubernetes" {
-  source              = "./cheap_azure_kubernetes"
+  source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
+  version = "1.0.0"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
   vnet_subnet_id      = azurerm_subnet.aks_subnet.id
