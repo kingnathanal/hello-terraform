@@ -13,6 +13,6 @@ provider "azurerm" {
 
 provider "azurerm" {
   features {}
-  alias = "second"
+  alias           = "second"
   subscription_id = "ca8d284a-c1ea-493c-873d-ac8b31b6616e"
 }
