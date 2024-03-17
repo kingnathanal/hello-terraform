@@ -40,9 +40,9 @@ resource "azurerm_subnet" "app_subnet" {
 }
 
 module "cheap_azure_kubernetes" {
-  #source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  #version = "1.0.0"
-  source              = "./cheap_azure_kubernetes"
+  source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
+  version = "1.0.0"
+  #source              = "./cheap_azure_kubernetes"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
   vnet_subnet_id      = azurerm_subnet.aks_subnet.id
