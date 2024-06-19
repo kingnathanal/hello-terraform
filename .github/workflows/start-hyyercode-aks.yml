@@ -1,0 +1,32 @@
+name: 'Start HyyerCode AKS'
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+ # verbosity setting for Terraform logs
+ # TF_LOG: INFO
+ # Credentials for deployment to AZURE
+ ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+ ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+ ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+ ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+
+jobs:
+  build_image:
+    name: 'Build Docker Image'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Azure Login
+      uses: azure/login@v2
+
+    - name: Azure CLI script
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az aks start --name hyyercode-aks --resource-group hyyercode-rg-aks
