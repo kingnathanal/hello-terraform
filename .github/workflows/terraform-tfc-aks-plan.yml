@@ -1,4 +1,4 @@
-name: 'Hyyer Code AKS Plan'
+name: 'Hyyer Code AKS Plan and Apply'
 
 on:
   workflow_dispatch:
@@ -10,14 +10,15 @@ env:
  # verbosity setting for Terraform logs
  # TF_LOG: INFO
  # Credentials for deployment to AZURE
+ TERRAFORM_VERSION: 1.8.5
  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
  
 jobs:
-  terraform:
-    name: 'Terraform'
+  plan-terraform:
+    name: 'Plan Terraform'
     runs-on: ubuntu-latest
     environment: production
 
@@ -36,7 +37,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.6.3
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
         cli_config_credentials_token: ${{ secrets.TFC_AUTH_TOKEN}}
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
@@ -48,11 +49,37 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plan
+    - name: Terraform 
       run: terraform plan -input=false
 
-      # On push to "master", build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-    #- name: Terraform Apply
-    #  if: github.ref == 'refs/heads/"master"' && github.event_name == 'push'
-    #  run: terraform apply -auto-approve -input=false
+  apply-terraform:
+    name: 'Apply Terraform'
+    runs-on: ubuntu-latest
+    needs: plan-terraform
+    environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./azure/hyyercode_aks
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        cli_config_credentials_token: ${{ secrets.TFC_AUTH_TOKEN}}
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init
+
+    # Generates an execution plan for Terraform
+    - name: Terraform 
+      run: terraform apply -auto-approve -input=false
