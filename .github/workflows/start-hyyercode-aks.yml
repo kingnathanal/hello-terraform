@@ -29,7 +29,6 @@ jobs:
         client-id: ${{ secrets.ARM_CLIENT_ID }}
         tenant-id: ${{ secrets.ARM_TENANT_ID }}
         subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-        auth-type: SERVICE_PRINCIPAL
 
     - name: Azure CLI script
       uses: azure/cli@v2
