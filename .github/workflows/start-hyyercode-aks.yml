@@ -2,8 +2,7 @@ name: 'Start HyyerCode AKS'
 
 on:
   schedule:
-    - cron: '36 17 * * *'
-  workflow_dispatch:
+    - cron: '40 17 * * *'
 
 permissions:
   contents: read
