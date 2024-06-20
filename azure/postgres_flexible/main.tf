@@ -41,16 +41,16 @@ resource "azapi_resource" "subnet1" {
 }
 
 resource "azurerm_postgresql_flexible_server" "this" {
-  name                   = "pgsql11112023wnb"
-  resource_group_name    = azurerm_resource_group.this.name
-  location               = azurerm_resource_group.this.location
-  version                = "16"
+  name                = "pgsql11112023wnb"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  version             = "16"
   #delegated_subnet_id    = azapi_resource.subnet1.id
   administrator_login    = "psqladmin"
   administrator_password = "H@Sh1CoR3!"
   #private_dns_zone_id    = azurerm_private_dns_zone.this.id
-  storage_mb             = 32768
-  zone = 1
+  storage_mb = 32768
+  zone       = 1
 
   sku_name = "B_Standard_B1ms"
 }
