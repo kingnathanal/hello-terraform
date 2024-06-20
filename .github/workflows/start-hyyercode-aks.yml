@@ -1,8 +1,9 @@
-name: 'Start HyyerCode AKS'
+name: 'Start Stop HyyerCode AKS'
 
 on:
   schedule:
     - cron: '0 14 * * *' # 2:00 PM UTC - 10:00 AM EST
+    - cron: '0 5 * * *' # 5:00 AM UTC - 1:00 AM EST
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,15 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
+    - name: Azure CLI script - Stop AKS
+      uses: azure/cli@v2
+      if: github.event.schedule != '0 14 * * *'
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az aks stop --name hyyercode-aks --resource-group hyyercode-rg-aks
+
+    - name: Azure CLI script - Start AKS
       uses: azure/cli@v2
       with:
         azcliversion: latest
