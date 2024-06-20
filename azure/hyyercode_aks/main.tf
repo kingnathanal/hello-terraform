@@ -43,7 +43,7 @@ module "cheap_azure_kubernetes" {
   aks_dns_prefix      = "hyyercode"
   aks_sku             = "Standard_A2_v2"
   identity = {
-    type: "UserAssigned"
+    type : "UserAssigned"
     identity_ids = [
       azurerm_user_assigned_identity.aks_identity.id
     ]
