@@ -2,7 +2,7 @@ name: 'Stop HyyerCode AKS'
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 5 * * *' # 5:00 AM UTC - 1:00 AM EST
   workflow_dispatch:
 
 permissions:
