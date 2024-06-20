@@ -34,7 +34,7 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
 
 module "cheap_azure_kubernetes" {
   source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  version = "1.1.2"
+  version = "1.1.3"
   #source              = "./cheap_azure_kubernetes"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
