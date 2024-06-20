@@ -22,7 +22,7 @@ jobs:
 
     - name: Azure CLI script - Stop AKS
       uses: azure/cli@v2
-      if: github.event.schedule != '0 14 * * *'
+      if: github.event.schedule == '0 5 * * *'
       with:
         azcliversion: latest
         inlineScript: |
@@ -30,6 +30,7 @@ jobs:
 
     - name: Azure CLI script - Start AKS
       uses: azure/cli@v2
+      if: github.event.schedule == '0 14 * * *'
       with:
         azcliversion: latest
         inlineScript: |
