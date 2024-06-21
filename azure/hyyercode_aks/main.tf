@@ -32,9 +32,21 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
   location            = local.location
 }
 
+resource "azurerm_role_assignment" "aks_identity_assignment" {
+  scope                = azurerm_resource_group.this.id
+  role_definition_name = "Managed Identity Operator"
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
+}
+
+resource "azurerm_role_assignment" "aks_identity_assignment" {
+  scope                = azurerm_resource_group.this.id
+  role_definition_name = "Network Contributor"
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
+}
+
 module "cheap_azure_kubernetes" {
   source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  version = "1.1.3"
+  version = "1.1.4"
   #source              = "./cheap_azure_kubernetes"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
@@ -42,6 +54,11 @@ module "cheap_azure_kubernetes" {
   aks_name            = "hyyercode-aks"
   aks_dns_prefix      = "hyyercode"
   aks_sku             = "Standard_A2_v2"
+  msi_identity = {
+    client_id = azurerm_user_assigned_identity.aks_identity.client_id
+    object_id = azurerm_user_assigned_identity.aks_identity.principal_id
+    user_assigned_id = azurerm_user_assigned_identity.aks_identity.id
+  }
   identity = {
     type : "UserAssigned"
     identity_ids = [
