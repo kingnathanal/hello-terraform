@@ -56,7 +56,7 @@ module "cheap_azure_kubernetes" {
   aks_sku             = "Standard_A2_v2"
   msi_identity = {
     client_id        = azurerm_user_assigned_identity.aks_identity.client_id
-    object_id        = azurerm_user_assigned_identity.aks_identity.principal_id
+    principal_id     = azurerm_user_assigned_identity.aks_identity.principal_id
     user_assigned_id = azurerm_user_assigned_identity.aks_identity.id
   }
   identity = {
