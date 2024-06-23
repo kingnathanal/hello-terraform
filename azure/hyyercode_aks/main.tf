@@ -53,7 +53,7 @@ module "cheap_azure_kubernetes" {
   vnet_subnet_id      = azurerm_subnet.aks_subnet.id
   aks_name            = "hyyercode-aks"
   aks_dns_prefix      = "hyyercode"
-  aks_sku             = "Standard_A2_v2"
+  aks_sku             = "Standard_D2as_v4"
   msi_identity = {
     client_id        = azurerm_user_assigned_identity.aks_identity.client_id
     principal_id     = azurerm_user_assigned_identity.aks_identity.principal_id
