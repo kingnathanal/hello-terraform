@@ -46,12 +46,12 @@ resource "azurerm_role_assignment" "aks_identity_assignment" {
 resource "azurerm_role_assignment" "aks_identity_assignment_net" {
   scope                = azurerm_resource_group.this.id
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
+  principal_id         = azurerm_user_assigned_identity.aks_identity.principal_idgit 
 }
 
 module "cheap_azure_kubernetes" {
   source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  version = "1.1.4"
+  version = "1.1.5"
   #source              = "./cheap_azure_kubernetes"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
