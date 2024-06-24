@@ -32,7 +32,7 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
   location            = local.location
 }
 
-resource "azurerm_dns_zone" "example-public" {
+resource "azurerm_dns_zone" "hyyercode_dns_zone" {
   name                = "hyyercode.com"
   resource_group_name = azurerm_resource_group.this.name
 }
