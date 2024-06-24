@@ -2,7 +2,7 @@ name: 'Start Stop HyyerCode AKS'
 
 on:
   schedule:
-    - cron: '0 14 * * *' # 2:00 PM UTC - 10:00 AM EST
+    - cron: '0 17 * * *' # 5:00 PM UTC - 1:00 PM EST
     - cron: '0 5 * * *' # 5:00 AM UTC - 1:00 AM EST
   workflow_dispatch:
 
