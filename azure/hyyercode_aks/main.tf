@@ -32,6 +32,11 @@ resource "azurerm_user_assigned_identity" "aks_identity" {
   location            = local.location
 }
 
+resource "azurerm_dns_zone" "example-public" {
+  name                = "hyyercode.com"
+  resource_group_name = azurerm_resource_group.this.name
+}
+
 resource "azurerm_role_assignment" "aks_identity_assignment" {
   scope                = azurerm_resource_group.this.id
   role_definition_name = "Managed Identity Operator"
