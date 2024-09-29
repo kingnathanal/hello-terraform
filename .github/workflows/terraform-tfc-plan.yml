@@ -47,7 +47,6 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.6.3
         cli_config_credentials_token: ${{ secrets.TFC_AUTH_TOKEN}}
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
