@@ -13,7 +13,6 @@ provider "azurerm" {
   features {}
   alias           = "second"
   subscription_id = var.second_subscription_id
-  #subscription_id = "ca8d284a-c1ea-493c-873d-ac8b31b6616e"
 }
 
 data "azurerm_storage_account" "secondary" {

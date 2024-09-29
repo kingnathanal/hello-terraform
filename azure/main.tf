@@ -11,6 +11,17 @@ variable "region" {
   type        = string
 }
 
+variable "subscription_id" {
+  description = "The subscription ID to use for the resources"
+  type        = string
+}
+
+variable "secondary_subscription_id" {
+  description = "The subscription ID to use for the resources"
+  type        = string
+  default     = ""
+}
+
 // create a resource group
 resource "azurerm_resource_group" "this" {
   name     = "hyyercode-rg-terraform"

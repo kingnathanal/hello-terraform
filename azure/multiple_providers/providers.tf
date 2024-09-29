@@ -2,17 +2,29 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.81.0"
+      version = "4.3.0"
     }
   }
 }
 
 provider "azurerm" {
   features {}
+  subscription_id = var.subscription_id
 }
 
 provider "azurerm" {
   features {}
   alias           = "second"
-  subscription_id = "ca8d284a-c1ea-493c-873d-ac8b31b6616e"
+  subscription_id = coalesce(var.secondary_subscription_id, var.subscription_id)
+}
+
+variable "subscription_id" {
+  description = "The subscription ID to use for the resources"
+  type        = string
+}
+
+variable "secondary_subscription_id" {
+  description = "The subscription ID to use for the resources"
+  type        = string
+  default     = ""
 }
