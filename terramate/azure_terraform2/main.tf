@@ -2,7 +2,7 @@ locals {
   location = var.region
   tags = {
     owner      = "Will Britton"
-    managed_by = "Terraform"
+    managed_by = "Terraform Terramate 2"
   }
 }
 
@@ -24,7 +24,7 @@ variable "secondary_subscription_id" {
 
 // create a resource group
 resource "azurerm_resource_group" "this" {
-  name     = "hyyercode-rg-terraform"
+  name     = "hyyercode-rg-terramate2"
   location = local.location
   tags     = local.tags
 }
@@ -35,8 +35,6 @@ resource "azurerm_virtual_network" "this" {
   location            = local.location
   resource_group_name = azurerm_resource_group.this.name
 }
-
-
 
 resource "azurerm_subnet" "aks_subnet" {
   name                 = "aks-subnet"
@@ -50,30 +48,6 @@ resource "azurerm_subnet" "app_subnet" {
   resource_group_name  = azurerm_resource_group.this.name
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = ["10.1.1.0/24"]
-}
-/*
-module "cheap_azure_kubernetes" {
-  source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  version = "1.0.0"
-  #source              = "./cheap_azure_kubernetes"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = local.location
-  vnet_subnet_id      = azurerm_subnet.aks_subnet.id
-}
-*/
-
-variable "prevent_destroy" {
-  description = "Prevent the destruction of the resource"
-  type        = bool
-  default     = false
-}
-
-resource "azurerm_storage_account" "this" {
-  name                     = "hyyercodestorage"
-  resource_group_name      = azurerm_resource_group.this.name
-  location                 = local.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
 }
 
 output "resource_group_id" {

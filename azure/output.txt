@@ -1,0 +1,22 @@
+{
+  "aks_subnet_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/subscriptions/cba339b6-ea03-48de-912f-7213c3f451ae/resourceGroups/hyyercode-rg-terraform/providers/Microsoft.Network/virtualNetworks/hyyercode-vnet/subnets/aks-subnet"
+  },
+  "app_subnet_id": {
+    "sensitive": true,
+    "type": "string",
+    "value": "/subscriptions/cba339b6-ea03-48de-912f-7213c3f451ae/resourceGroups/hyyercode-rg-terraform/providers/Microsoft.Network/virtualNetworks/hyyercode-vnet/subnets/app-subnet"
+  },
+  "resource_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/subscriptions/cba339b6-ea03-48de-912f-7213c3f451ae/resourceGroups/hyyercode-rg-terraform"
+  },
+  "vnet_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/subscriptions/cba339b6-ea03-48de-912f-7213c3f451ae/resourceGroups/hyyercode-rg-terraform/providers/Microsoft.Network/virtualNetworks/hyyercode-vnet"
+  }
+}

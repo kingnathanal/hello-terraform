@@ -8,3 +8,5 @@
 *.tfstate.*
 
 **/.terragrunt-cache/*
+
+.venv*

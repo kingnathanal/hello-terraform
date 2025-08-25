@@ -1,7 +1,7 @@
 
 
 module "hyyercode-st" {
-  source                 = "../test_module"
+  source                    = "../test_module"
   secondary_subscription_id = var.secondary_subscription_id
   //providers = {
   //  azurerm.second = azurerm.second
