@@ -20,6 +20,7 @@ provider "azurerm" "this" {
     client_id       = var.client_id
     subscription_id = var.subscription_id
     tenant_id       = var.tenant_id
+    client_secret   = var.client_secret
   }
 }
 
@@ -30,6 +31,7 @@ provider "azapi" "this" {
     client_id       = var.client_id
     subscription_id = var.subscription_id
     tenant_id       = var.tenant_id
+    client_secret   = var.client_secret
   }
 }
 
@@ -38,13 +40,11 @@ variable "client_id" {
   description = "The Client ID of the Service Principal to use for authentication."
   ephemeral   = true
   sensitive = true
-  default     = ""
 }
 
 variable "subscription_id" {
   type        = string
   description = "The Subscription ID to use for authentication."
-  default     = ""
 }
 
 variable "tenant_id" {
@@ -52,7 +52,6 @@ variable "tenant_id" {
   description = "The Tenant ID of the Service Principal to use for authentication."
   ephemeral   = true
   sensitive   = true
-  default     = ""
 }
 
 variable "identity_token" {
@@ -60,4 +59,11 @@ variable "identity_token" {
   description = "The OIDC identity token to use for authentication."
   ephemeral   = true
   default     = ""
+}
+
+variable "client_secret" {
+  type        = string
+  description = "The Client Secret of the Service Principal to use for authentication."
+  ephemeral   = true
+  sensitive   = true
 }

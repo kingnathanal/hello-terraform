@@ -20,6 +20,7 @@ deployment "development" {
     subscription_id = "cba339b6-ea03-48de-912f-7213c3f451ae"
     client_id       = store.varset.env_creds.ARM_CLIENT_ID
     tenant_id       = store.varset.env_creds.ARM_TENANT_ID
+    client_secret   = store.varset.env_creds.ARM_CLIENT_SECRET
 
   }
 }
@@ -32,5 +33,6 @@ deployment "test" {
     subscription_id = "ca8d284a-c1ea-493c-873d-ac8b31b6616e"
     client_id       = store.varset.env_creds.ARM_CLIENT_ID
     tenant_id       = store.varset.env_creds.ARM_TENANT_ID
+    client_secret   = store.varset.env_creds.ARM_CLIENT_SECRET
   }
 }
