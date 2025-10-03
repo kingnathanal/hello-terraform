@@ -1,5 +1,5 @@
 store "varset" "creds" {
-  name     = "Azure Creds"
+  id       = "varset-bfdCkS9T3k2KYfci"
   category = "terraform"
 }
 
