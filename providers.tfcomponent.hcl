@@ -50,3 +50,9 @@ variable "tenant_id" {
   description = "The Tenant ID of the Service Principal to use for authentication."
   default     = ""
 }
+
+variable "identity_token" {
+  type        = string
+  description = "The OIDC identity token to use for authentication."
+  default     = ""
+}
