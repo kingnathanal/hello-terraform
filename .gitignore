@@ -13,3 +13,4 @@
 
 !.terraform-version
 !/azure/terraform_stacks/.terraform.lock.hcl
+!.terraform.lock.hcl
