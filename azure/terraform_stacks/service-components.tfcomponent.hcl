@@ -16,7 +16,7 @@ component "bootstrap" {
 component "vnet" {
   source = "./vnet"
   inputs = {
-    region = var.azure_region
+    region              = var.azure_region
     resource_group_name = component.bootstrap.resource_group_name
   }
   providers = {
