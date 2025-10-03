@@ -36,6 +36,8 @@ provider "azapi" "this" {
 variable "client_id" {
   type        = string
   description = "The Client ID of the Service Principal to use for authentication."
+  ephemeral   = true
+  sensitive = true
   default     = ""
 }
 
@@ -48,6 +50,8 @@ variable "subscription_id" {
 variable "tenant_id" {
   type        = string
   description = "The Tenant ID of the Service Principal to use for authentication."
+  ephemeral   = true
+  sensitive   = true
   default     = ""
 }
 
