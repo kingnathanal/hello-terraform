@@ -4,7 +4,7 @@ variable "azure_region" {
 }
 
 component "bootstrap" {
-  source = "./bootstrap"
+  source = "./azure/terraform_stacks/bootstrap"
   inputs = {
     region = var.azure_region
   }
@@ -14,7 +14,7 @@ component "bootstrap" {
 }
 
 component "vnet" {
-  source = "./vnet"
+  source = "./azure/terraform_stacks/vnet"
   inputs = {
     region              = var.azure_region
     resource_group_name = component.bootstrap.resource_group_name
