@@ -10,3 +10,5 @@
 **/.terragrunt-cache/*
 
 .venv*
+
+!.terraform-version
