@@ -54,5 +54,6 @@ variable "tenant_id" {
 variable "identity_token" {
   type        = string
   description = "The OIDC identity token to use for authentication."
+  ephemeral   = true
   default     = ""
 }
