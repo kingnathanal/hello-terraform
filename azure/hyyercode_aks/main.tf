@@ -49,15 +49,21 @@ resource "azurerm_role_assignment" "aks_identity_assignment_net" {
   principal_id         = azurerm_user_assigned_identity.aks_identity.principal_id
 }
 
+resource "azurerm_role_assignment" "aks_admin" {
+  scope                = azurerm_resource_group.this.id
+  role_definition_name = "Azure Kubernetes Service RBAC Cluster Admin"
+  principal_id         = "eebeded5-ca04-4868-a81b-09eb39265ec8"
+}
+
 module "cheap_azure_kubernetes" {
-  source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
-  version = "1.1.6"
-  #source              = "/Users/kingnathanal/code/terraform-azurerm-cheap_aks"
+  //source  = "app.terraform.io/hyyercode/cheap_aks/azurerm"
+  //version = "1.1.6"
+  source              = "/Users/kingnathanal/code/terraform-azurerm-cheap_aks"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.location
   vnet_subnet_id      = azurerm_subnet.aks_subnet.id
   aks_name            = "hyyercode-aks"
-  aks_dns_prefix      = "hyyercode"
+  //aks_dns_prefix      = "hyyercode"
   aks_sku             = "Standard_D2as_v4"
   subscription_id     = var.subscription_id
   msi_identity = {
