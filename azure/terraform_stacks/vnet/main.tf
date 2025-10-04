@@ -26,6 +26,13 @@ resource "azurerm_subnet" "tfstack_subnet" {
   address_prefixes     = ["10.1.2.0/24"]
 }
 
+resource "azurerm_subnet" "tfstack_subnet2" {
+  name                 = "tfstack-subnet2"
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.this.name
+  address_prefixes     = ["10.1.3.0/24"]
+}
+
 variable "resource_group_name" {
   description = "The name of the resource group in which all resources will be created"
   type        = string
