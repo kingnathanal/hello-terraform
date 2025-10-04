@@ -6,7 +6,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = "hyyercode-rg-terraform"
+  name     = "terraform-rg-stacks"
   location = var.region
   tags     = local.tags
 }
