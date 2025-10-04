@@ -19,7 +19,7 @@ resource "azurerm_subnet" "app_subnet" {
   address_prefixes     = ["10.1.1.0/24"]
 }
 
-resource "azurerm_subnet" "app_subnet" {
+resource "azurerm_subnet" "tfstack_subnet" {
   name                 = "tfstack-subnet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.this.name
