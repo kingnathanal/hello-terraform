@@ -56,6 +56,6 @@ variable "msi_identity" {
 }
 
 variable "subscription_id" {
-  type = string
+  type        = string
   description = "value of the subscription id"
 }

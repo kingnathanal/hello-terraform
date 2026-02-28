@@ -63,6 +63,6 @@ output "aks_subnet_id" {
 }
 
 output "app_subnet_id" {
-  value = azurerm_subnet.app_subnet.id
+  value     = azurerm_subnet.app_subnet.id
   sensitive = true
 }
