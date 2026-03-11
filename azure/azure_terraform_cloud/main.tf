@@ -1,5 +1,5 @@
 locals {
-  location = "eastus2"
+  location = "eastus2" # Azure region
   tags = {
     owner      = "Will Britton"
     managed_by = "Terraform"
